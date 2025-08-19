@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { createTheme, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import "./globals.css";
+import { HeaderSimple } from "./components/headerComponent/simpleHeader";
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <MantineProvider theme={theme}>
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );

@@ -1,0 +1,93 @@
+.editorRoot {
+  display: grid;
+  grid-template-columns: 56px 280px 1fr 320px;
+  grid-template-rows: 48px 1fr;
+  grid-template-areas:
+    "top    top       top    top"
+    "tools  leftPanel canvas right";
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.topBar {
+  grid-area: top;
+  border-bottom: 1px solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background: var(--mantine-color-body);
+}
+
+.leftToolbar {
+  grid-area: tools;
+  border-right: 1px solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background: var(--mantine-color-body);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 4px;
+}
+
+.leftPanel {
+  grid-area: leftPanel;
+  border-right: 1px solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background: var(--mantine-color-body);
+  overflow: auto;
+}
+
+.canvasAreaWrapper {
+  grid-area: canvas;
+  background: var(--mantine-color-body);
+  overflow: hidden;
+  position: relative;
+}
+
+.canvasAreaInner {
+  height: 100%;
+  width: 100%;
+  background-color: #f8f9fb;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    #e5e7eb 1px,
+    transparent 0
+  );
+  background-size: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightSidebar {
+  grid-area: right;
+  border-left: 1px solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background: var(--mantine-color-body);
+  overflow: auto;
+  padding: 8px;
+}
+
+@media (max-width: 1200px) {
+  .editorRoot {
+    grid-template-columns: 56px 1fr 320px;
+    grid-template-areas:
+      "top    top    top"
+      "tools  canvas right";
+  }
+  .leftPanel {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .editorRoot {
+    grid-template-columns: 56px 1fr;
+    grid-template-areas:
+      "top    top"
+      "tools  canvas";
+  }
+  .rightSidebar {
+    display: none;
+  }
+}
